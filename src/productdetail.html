@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Detalle del Producto</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./products.css" rel="stylesheet" />
+    <style>
+        .imgLogo {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../public/images/logo.jpeg" alt="logo de la empresa" class="imgLogo" width="80px" height="80px" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse navegacion" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="anclas hvr-underline-from-center gamer nav-link" aria-current="page" href="./index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="anclas hvr-underline-from-center gamer nav-link" href="./categoria.html">Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="anclas hvr-underline-from-center gamer nav-link" href="./products.html">Productos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <hr />
+    </header>
+    <div class="container mt-5">
+        <h1 class="text-center">Detalle del Producto</h1>
+        <div id="product-detail" class="row mt-4 d-flex justify-content-center">
+            <!-- Detalle del producto se cargará aquí -->
+        </div>
+    </div>
+    <footer class="bg-black text-center py-3 mt-5 d-flex">
+        <div class="container">
+            <p class="mb-1 d-flex justify-content-between">Grupo 5 TPI Grupal</p>
+            <a href="https://github.com/Matijasevic-Emer/cilsa-tpi-grupos/tree/feature/product-detail" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="30px" height="30px"/>
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="Instagram" width="30px" height="30px"/>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+
+            const products = [
+                { id: 1, nombre: "Teclado Mecánico RGB", categoria: "Periféricos", image: "https://www.hd-tecnologia.com/imagenes/articulos/2020/10/CORSAIR-presenta-un-nuevo-teclado-mecanico-para-juegos-el-CORSAIR-K60-RGB-PRO.jpg", descripcion: "Teclado mecánico con retroiluminación RGB completo, ideal para juegos." },
+                { id: 2, nombre: "Mouse Gaming Inalámbrico", categoria: "Periféricos", image: "https://www.malditohard.com.ar/wp-content/uploads/product/8/MOU061.webp", descripcion: "Mouse inalámbrico con alta precisión y múltiples botones programables." },
+                { id: 3, nombre: "Monitor Gaming 27'' 144Hz", categoria: "Monitores", image: "https://www.qloud.ar/SITES/IMG/gaming-point-06-2021/221_06-03-2023-03-03-55-2.png", descripcion: "Monitor de 27 pulgadas con una alta tasa de refresco de 144Hz." },
+                { id: 4, nombre: "Tarjeta Gráfica RTX 3080", categoria: "Componentes", image: "https://www.ozeros.com/wp-content/uploads/2020/10/MSI-GEFORCE-RTX-3080-GAMING-X-TRIO-10G-1.jpg", descripcion: "Potente tarjeta gráfica RTX 3080 para videojuegos exigentes." },
+                { id: 5, nombre: "Auriculares Gaming con Micrófono", categoria: "Periféricos", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5vm5t80tSqb_Bw5YdcZvEGtwi8jBYiT4P7w&s", descripcion: "Auriculares gaming con sonido envolvente y micrófono incorporado." },
+                { id: 6, nombre: "Silla Gaming Ergonómica", categoria: "Mobiliario", image: "https://img.freepik.com/fotos-premium/silla-gaming-ergonomica-colores-vibrantes-00478-01_883586-53770.jpg?w=826", descripcion: "Silla ergonómica diseñada para sesiones de juegos largas." }
+            ];
+
+            const productoSeleccionado = products.find(product => product.id === productId);
+
+            if (productoSeleccionado) {
+                const productDetail = document.getElementById('product-detail');
+                const productCard = document.createElement('div');
+                productCard.className = 'card h-100';
+                productCard.style.width = '18rem';
+                productCard.innerHTML = `
+                    <img src="${productoSeleccionado.image}" class="card-img-top" alt="${productoSeleccionado.nombre}">
+                    <div class="card-body">
+                        <h5 class="card-title">${productoSeleccionado.nombre}</h5>
+                        <p class="card-text">Categoría: ${productoSeleccionado.categoria}</p>
+                        <p class="card-text">${productoSeleccionado.descripcion}</p>
+                    </div>
+                `;
+                productDetail.appendChild(productCard);
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+        crossorigin="anonymous"></script>
+</body>
+</html>

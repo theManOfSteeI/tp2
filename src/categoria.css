@@ -1,0 +1,17 @@
+
+/* Categorias*/
+
+body{
+    background-color: black;
+    color: aliceblue;
+}
+
+.imgLogo {
+    border-radius: 50%;
+    height: 100px;
+}
+
+.card{
+    background-color: rgb(160, 7, 96);
+    color: #fff;
+}
